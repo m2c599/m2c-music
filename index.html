@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>app for the music by m2c — Télécharger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+<style>
+  :root{--texte:#eef0ff;--discret:#a3a9cf;--accent:#1ed760;--ligne:rgba(255,255,255,.14)}
+  *{box-sizing:border-box}
+  body{margin:0;background:#02030a;color:var(--texte);font-family:"Avenir Next","Segoe UI",system-ui,sans-serif;line-height:1.6}
+  #c{position:fixed;inset:0;z-index:-1}
+  .wrap{max-width:900px;margin:0 auto;padding:0 20px}
+  header{text-align:center;padding:90px 0 50px}
+  .logo{margin:0;font-family:Audiowide,Orbitron,"Segoe UI",fantasy;font-weight:400;font-size:clamp(30px,7vw,64px);line-height:1.1;background:linear-gradient(90deg,#ffe3b0,#ff7a3d 55%,#c86bff);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 18px rgba(255,122,61,.45))}
+  .logo span{display:block;font-size:.5em;letter-spacing:.3em;margin-top:8px}
+  .accroche{font-size:19px;color:var(--discret);max-width:560px;margin:22px auto 28px}
+  .btn{display:inline-block;background:var(--accent);color:#06130a;font-weight:700;font-size:18px;padding:16px 34px;border-radius:40px;text-decoration:none;box-shadow:0 0 30px rgba(30,215,96,.35);transition:transform .15s}
+  .btn:hover{transform:scale(1.04)}
+  .petit{font-size:13px;color:var(--discret);margin-top:12px}
+  section{margin:50px 0}
+  h2{font-size:26px;margin:0 0 16px}
+  .cartes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .carte,.boite{background:rgba(12,14,34,.78);border:1px solid var(--ligne);border-radius:14px;padding:20px}
+  .carte h3{margin:0 0 6px;font-size:18px}
+  .carte p{margin:0;color:var(--discret)}
+  ol{padding-left:22px;margin:0}
+  li{margin-bottom:10px}
+  details{margin-top:12px}
+  summary{cursor:pointer;font-weight:600}
+  a{color:#ffb27a}
+  footer{text-align:center;color:var(--discret);font-size:13px;padding:30px 0 50px}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div class="wrap">
+  <header>
+    <h1 class="logo">app for the music <span>by m2c</span></h1>
+    <p class="accroche">Ta musique, YouTube et tes playlists dans une seule application pour Windows.</p>
+    <a class="btn dl" href="#">⬇ Télécharger pour Windows</a>
+    <p class="petit">Gratuit · Windows 10 et 11</p>
+  </header>
+
+  <section class="cartes">
+    <div class="carte"><h3>🔎 Recherche YouTube</h3><p>Cherche n'importe quelle musique et écoute-la directement dans l'application.</p></div>
+    <div class="carte"><h3>🎧 Ta propre musique</h3><p>Importe tes fichiers audio, crée des playlists et retrouve-les à chaque ouverture.</p></div>
+    <div class="carte"><h3>🛠 Personnalisable</h3><p>Change les textes, les couleurs, le fond espace et le volume depuis la page Admin.</p></div>
+  </section>
+
+  <section>
+    <h2>Installer en 3 étapes</h2>
+    <div class="boite">
+      <ol>
+        <li>Clique sur <strong>Télécharger pour Windows</strong> et récupère le fichier <code>m2c-music-installateur.exe</code>.</li>
+        <li>Double-clique dessus. Si Windows affiche « Windows a protégé votre ordinateur », clique sur <strong>Informations complémentaires</strong>, puis sur <strong>Exécuter quand même</strong>. C'est normal : l'application n'est pas encore signée par un éditeur reconnu.</li>
+        <li>Ouvre <strong>m2c music</strong> avec le raccourci créé sur ton bureau.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <h2>Bon à savoir</h2>
+    <div class="boite">
+      <p>Ta bibliothèque et tes réglages restent sur ton ordinateur. La recherche YouTube demande une <strong>clé gratuite</strong> à créer une seule fois :</p>
+      <details>
+        <summary>Comment obtenir ma clé YouTube ?</summary>
+        <ol>
+          <li>Va sur <a href="https://console.cloud.google.com" target="_blank" rel="noopener">console.cloud.google.com</a> et connecte-toi avec un compte Google.</li>
+          <li>Crée un nouveau projet (sélecteur de projet en haut, puis « Nouveau projet »).</li>
+          <li>Dans « API et services », puis « Bibliothèque », cherche <strong>YouTube Data API v3</strong> et clique sur « Activer ».</li>
+          <li>Dans « Identifiants », clique sur « Créer des identifiants », puis « Clé API », et copie la clé.</li>
+          <li>Dans l'application, ouvre la page Bibliothèque, clique sur ⚙ à côté de la recherche et colle la clé.</li>
+        </ol>
+        <p class="petit">Limite gratuite : environ 100 recherches par jour.</p>
+      </details>
+    </div>
+  </section>
+
+  <footer>app for the music by m2c</footer>
+</div>
+
+<script>
+/* ====== À MODIFIER : ton nom GitHub et le nom du dépôt ====== */
+const UTILISATEUR = 'TON-NOM-GITHUB';
+const DEPOT = 'm2c-music';
+const LIEN_DIRECT = ''; // si tu héberges l'installateur ailleurs, colle ici son lien de téléchargement
+/* ============================================================ */
+const lien = LIEN_DIRECT || 'https://github.com/' + UTILISATEUR + '/' + DEPOT + '/releases/latest/download/m2c-music-installateur.exe';
+document.querySelectorAll('.dl').forEach(a => a.href = lien);
+
+/* Fond : étoiles et trou noir */
+const cv = document.getElementById('c'), cx = cv.getContext('2d');
+let W, H, etoiles, disque;
+function dim() {
+  W = cv.width = innerWidth; H = cv.height = innerHeight;
+  etoiles = Array.from({length: 200}, () => ({x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.3 + .3, p: Math.random() * 6}));
+  disque = Array.from({length: 600}, () => ({a: Math.random() * 6.283, r: 1.35 + Math.random() * 2.2}));
+}
+addEventListener('resize', dim); dim();
+function points(R, avant) {
+  for (const p of disque) {
+    if ((Math.sin(p.a) >= 0) !== avant) continue;
+    const c = 3.5 - p.r;
+    cx.fillStyle = 'hsl(' + (20 + c * 14) + ',100%,' + (58 + c * 10) + '%)';
+    cx.fillRect(Math.cos(p.a) * p.r * R, Math.sin(p.a) * p.r * R * .3, 1.6, 1.6);
+  }
+}
+function dessiner(t) {
+  cx.clearRect(0, 0, W, H);
+  for (const s of etoiles) { cx.globalAlpha = .35 + .65 * Math.abs(Math.sin(t / 1500 + s.p)); cx.fillStyle = '#fff'; cx.fillRect(s.x, s.y, s.r, s.r); }
+  cx.globalAlpha = 1;
+  const R = Math.min(W, H) * .09, X = W * .78, Y = H * .22;
+  const g = cx.createRadialGradient(X, Y, R, X, Y, R * 5);
+  g.addColorStop(0, 'rgba(255,140,60,.35)'); g.addColorStop(1, 'rgba(255,140,60,0)');
+  cx.fillStyle = g; cx.fillRect(X - R * 5, Y - R * 5, R * 10, R * 10);
+  cx.save(); cx.translate(X, Y); cx.rotate(-.35);
+  points(R, false);
+  cx.fillStyle = '#000'; cx.beginPath(); cx.arc(0, 0, R, 0, 6.283); cx.fill();
+  cx.strokeStyle = 'rgba(255,205,130,.85)'; cx.lineWidth = 2; cx.beginPath(); cx.arc(0, 0, R * 1.03, 0, 6.283); cx.stroke();
+  points(R, true);
+  cx.restore();
+  for (const p of disque) p.a += .02 / Math.pow(p.r, 1.5);
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) requestAnimationFrame(dessiner);
+}
+requestAnimationFrame(dessiner);
+</script>
+</body>
+</html>
